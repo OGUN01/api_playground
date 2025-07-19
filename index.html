@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+      // Advanced security measures
+      (function() {
+        // Disable developer tools
+        function disableDevTools() {
+          const disableDevtoolsKeys = (e) => {
+            if (
+              e.keyCode === 123 || // F12
+              (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I or J
+              (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+            ) {
+              e.preventDefault();
+            }
+          };
+
+          // Disable right-click
+          document.addEventListener('contextmenu', (e) => e.preventDefault());
+          
+          // Disable keyboard shortcuts
+          document.addEventListener('keydown', disableDevtoolsKeys);
+          
+          // Detect and prevent DevTools
+          const interval = setInterval(() => {
+            const isDevToolsOpen = window.outerWidth - window.innerWidth > 160 || 
+                                 window.outerHeight - window.innerHeight > 160;
+            if (isDevToolsOpen) {
+              document.documentElement.innerHTML = 'Developer Tools are not allowed.';
+            }
+          }, 1000);
+
+          // Disable console in production
+          if (window.location.hostname !== 'localhost') {
+            const noop = () => {};
+            ['log', 'debug', 'info', 'warn', 'error', 'table', 'trace', 'assert'].forEach(method => {
+              console[method] = noop;
+            });
+            
+            // Prevent console access
+            Object.defineProperty(window, 'console', {
+              get: () => ({
+                log: noop,
+                debug: noop,
+                info: noop,
+                warn: noop,
+                error: noop,
+                table: noop,
+                trace: noop,
+                assert: noop
+              }),
+              configurable: false
+            });
+          }
+        }
+
+        // Initialize security measures
+        disableDevTools();
+        
+        // Prevent source code viewing
+        document.addEventListener('keydown', function(e) {
+          if (e.ctrlKey && (e.key === 'u' || e.key === 's')) {
+            e.preventDefault();
+            return false;
+          }
+        });
+      })();
+    </script>
+    <title>Strawberry Ai</title>
+  </head>
+  <body>
+    <div id="root">
+      <div id="loading" style="height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div style="text-align: center;">
+          <div style="width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+          <p style="margin-top: 1rem; color: #666;">Loading...</p>
+        </div>
+      </div>
+    </div>
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

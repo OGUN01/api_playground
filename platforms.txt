@@ -1,0 +1,9 @@
+Here are some game selling website options, categorized for your convenience:
+
+**Major Platforms & Marketplaces (Large Audience, Often with a Fee):**
+
+• **Steam (PC):** The dominant platform for PC gaming. Offers distribution, DRM, and a large community. Requires approval and has revenue sharing.
+
+• **GOG.com (PC):** Known for DRM-free games, a curated selection, and older titles alongside new releases. Also involves a revenue-sharing agreement.
+
+• **Itch.io (PC, Mac, Linux, Web):** A highly independent platform where developers have more control over their pricing and there are no hard revenue-sharing fees (you can choose to contribute to the site). Good place for experimental and indie games.
